@@ -11,7 +11,7 @@
       lib = nixpkgs.lib;
     in {
     nixosConfigurations = {
-      nixos = lib.nixosSystem {
+      VM = lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ ./hosts/VM/configuration.nix ];
       };
