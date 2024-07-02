@@ -32,8 +32,8 @@
         inherit pkgs;
         extraSpecialArgs = { inherit inputs username; };
         modules = [ ./home-manager/home.nix ];
-      }
-    }
+      };
+    };
   };
 
 }
