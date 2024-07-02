@@ -1,9 +1,10 @@
 {
 
-  description = "First flake";
+  description = "NixOS and Home Manager configuration";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+
     home-manager = {
         url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -21,7 +22,7 @@
     in {
     nixosConfigurations = {
       VM = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs username system};
+        specialArgs = { inherit inputs username system; };
         modules = [ ./hosts/VM/configuration.nix ];
       };
     };
