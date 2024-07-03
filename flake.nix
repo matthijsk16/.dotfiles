@@ -10,7 +10,7 @@
         inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-# hoi
+# hoi en doei
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       username = "matthijs";
