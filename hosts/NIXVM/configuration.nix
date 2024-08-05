@@ -12,4 +12,11 @@
     ];
 
     networking.hostName = "NIXVM"; # Define your hostname.
+
+    home-manager = {
+        extraSpecialArgs = { inherit inputs; };
+        users = {
+            "matthijs" = import ../../home-manager/home.nix;
+        };
+    };
 }
