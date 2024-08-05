@@ -21,17 +21,12 @@
       };
     in {
     nixosConfigurations = {
-      VM = nixpkgs.lib.nixosSystem {
+      NIXVM = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs username system; };
-        modules = [ ./hosts/VM/configuration.nix ];
-      };
-    };
-
-    homeConfigurations = {
-      ${username} = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit inputs username; };
-        modules = [ ./home-manager/home.nix ];
+        modules = [ 
+          ./hosts/default/configuration.nix
+          ./hosts/NIXVM/configuration.nix 
+          ];
       };
     };
   };
