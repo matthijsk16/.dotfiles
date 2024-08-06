@@ -6,12 +6,12 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
     ];
 
-    networking.hostName = "NIXVM"; # Define your hostname.
+    networking.hostName = "NIXVM";
 
     home-manager = {
         extraSpecialArgs = { inherit inputs username; };
