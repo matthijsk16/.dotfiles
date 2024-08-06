@@ -4,6 +4,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    oldnixpkgs.url = "nixpkgs/nixos-20.09";
 
     home-manager = {
         url = "github:nix-community/home-manager";
@@ -15,12 +16,12 @@
     let
       username = "matthijs";
 
-      mkSystem = pkgs: system: hostname:
+      mkSystem = packages: system: hostname:
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { 
             inherit inputs username; 
-            pkgs = import nixpkgs { 
+            pkgs = import packages { 
               inherit system; 
               config = { allowUnfree = true; }; 
             };
