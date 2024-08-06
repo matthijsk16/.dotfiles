@@ -22,7 +22,7 @@
     in {
     nixosConfigurations = {
       NIXVM = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs username; };
+        specialArgs = { inherit inputs; };
         modules = [ 
           ./hosts/default/configuration.nix
           ./hosts/NIXVM/configuration.nix 
