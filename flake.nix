@@ -18,12 +18,10 @@
       mkSystem = pkgs: system: hostname:
         pkgs.lib.nixosSystem {
           system = system;
+          config.allowUnfree = true;
           specialArgs = { inherit inputs username; };
           modules = [
-            { 
-              networking.hostName = hostname;
-              config.allowUnfree = true;
-            }
+            { networking.hostName = hostname; }
             ./modules/system/configuration.nix
             ./hosts/${hostname}/configuration.nix
           ];
