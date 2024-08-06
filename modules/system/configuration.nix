@@ -22,6 +22,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  config.allowUnfree = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
 
@@ -47,7 +49,7 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.matthijs = {
+  users.users.${username} = {
     isNormalUser = true;
     description = "Matthijs";
     extraGroups = [ "networkmanager" "wheel" ];

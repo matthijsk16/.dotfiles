@@ -14,11 +14,6 @@
   outputs = { self, nixpkgs, ... }@inputs:
     let
       username = "matthijs";
-      #system = "x86_64-linux";
-      #pkgs = import nixpkgs {
-      #  inherit system;
-      #  config.allowUnfree = true;
-      #};
 
       mkSystem = pkgs: system: hostname:
         pkgs.lib.nixosSystem {
