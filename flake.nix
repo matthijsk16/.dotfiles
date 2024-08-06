@@ -16,10 +16,9 @@
       username = "matthijs";
 
       mkSystem = pkgs: system: hostname:
-        pkgs.lib.nixosSystem {
-          system = system;
-          config.allowUnfree = true;
-          specialArgs = { inherit inputs username; };
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs system username; };
           modules = [
             { networking.hostName = hostname; }
             ./modules/system/configuration.nix
