@@ -57,10 +57,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    home-manager
-    vim
-    wget
     git
+    nano
+    neovim
+    wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
