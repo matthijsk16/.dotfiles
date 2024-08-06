@@ -4,7 +4,6 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    oldnixpkgs.url = "nixpkgs/nixos-20.09";
 
     home-manager = {
         url = "github:nix-community/home-manager";
