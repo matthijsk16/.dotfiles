@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 
 {
   systemd.oomd.enable = false;
@@ -47,7 +47,7 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.matthijs = {
+  users.users.${username} = {
     isNormalUser = true;
     description = "Matthijs";
     extraGroups = [ "networkmanager" "wheel" ];
@@ -57,10 +57,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    home-manager
-    vim
-    wget
     git
+    nano
+    neovim
+    wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
