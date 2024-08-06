@@ -20,7 +20,10 @@
           system = system;
           specialArgs = { inherit inputs username; };
           modules = [
-            { networking.hostName = hostname; }
+            { 
+              networking.hostName = hostname;
+              config.allowUnfree = true;
+            }
             ./modules/system/configuration.nix
             ./hosts/${hostname}/configuration.nix
           ];

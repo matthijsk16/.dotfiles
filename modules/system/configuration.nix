@@ -22,8 +22,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  config.allowUnfree = true;
-
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
 
