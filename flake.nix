@@ -15,14 +15,14 @@
     let
       username = "matthijs";
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      #pkgs = import nixpkgs {
+      #  inherit system;
+      #  config.allowUnfree = true;
+      #};
     in {
     nixosConfigurations = {
       NIXVM = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs username; };
         modules = [ 
           ./hosts/default/configuration.nix
           ./hosts/NIXVM/configuration.nix 
