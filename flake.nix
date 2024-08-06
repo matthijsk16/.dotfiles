@@ -11,7 +11,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       username = "matthijs";
       system = "x86_64-linux";
@@ -22,7 +22,7 @@
     in {
     nixosConfigurations = {
       NIXVM = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs username system; };
+        specialArgs = { inherit inputs username; };
         modules = [ 
           ./hosts/default/configuration.nix
           ./hosts/NIXVM/configuration.nix 
