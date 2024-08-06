@@ -11,8 +11,6 @@
       inputs.home-manager.nixosModules.default
     ];
 
-    networking.hostName = "NIXVM";
-
     home-manager = {
         extraSpecialArgs = { inherit inputs username; };
         users = {

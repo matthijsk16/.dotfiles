@@ -14,20 +14,26 @@
   outputs = { self, nixpkgs, ... }@inputs:
     let
       username = "matthijs";
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      #system = "x86_64-linux";
+      #pkgs = import nixpkgs {
+      #  inherit system;
+      #  config.allowUnfree = true;
+      #};
+
+      mkSystem = pkgs: system: hostname:
+        pkgs.lib.nixosSystem {
+          system = system;
+          specialArgs = { inherit inputs username; };
+          modules = [
+            { networking.hostName = hostname; }
+            ./modules/system/configuration.nix
+            ./hosts/${hostname}/configuration.nix
+          ];
+        };
+
     in {
     nixosConfigurations = {
-      NIXVM = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs username; };
-        modules = [ 
-          ./hosts/default/configuration.nix
-          ./hosts/NIXVM/configuration.nix 
-          ];
-      };
+      NIXVM = mkSystem nixpkgs "x86_64-linux" "NIXVM";
     };
   };
 
