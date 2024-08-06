@@ -18,7 +18,13 @@
       mkSystem = pkgs: system: hostname:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs system username; };
+          specialArgs = { 
+            inherit inputs username; 
+            pkgs = import nixpkgs { 
+              inherit system; 
+              config = { allowUnfree = true; }; 
+            };
+          };
           modules = [
             { networking.hostName = hostname; }
             ./modules/system/configuration.nix
