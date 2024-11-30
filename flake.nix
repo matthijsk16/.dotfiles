@@ -33,7 +33,6 @@
     in {
     nixosConfigurations = {
       PC-Matthijs = mkSystem nixpkgs "x86_64-linux" "PC-Matthijs";
-      # NIXVM = mkSystem nixpkgs "x86_64-linux" "NIXVM";
     };
   };
 

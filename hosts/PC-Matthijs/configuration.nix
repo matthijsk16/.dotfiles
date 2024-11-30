@@ -6,7 +6,7 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.home-manager
     ];
@@ -18,10 +18,9 @@
     };
   };
 
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
   # Enable networking
   networking.networkmanager.enable = true;
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.matthijs = {
@@ -33,9 +32,9 @@
 
   # List packages installed in system profile. 
   environment.systemPackages = with pkgs; [
+    home-manager # Remove ??
     git
     gh
-    home-manager
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
