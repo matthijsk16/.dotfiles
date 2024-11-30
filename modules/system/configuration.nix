@@ -27,9 +27,8 @@
         useOSProber = true;
       };
       efi = {
-        efiSysMountPoint = "/efi";
         canTouchEfiVariables = true;
-      }
+      };
     };
   };
 
