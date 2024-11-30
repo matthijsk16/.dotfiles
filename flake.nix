@@ -13,13 +13,11 @@
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
-      username = "matthijs";
-
       mkSystem = packages: system: hostname:
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { 
-            inherit inputs username; 
+            inherit inputs; 
             pkgs = import packages { 
               inherit system; 
               config = { allowUnfree = true; }; 
@@ -34,7 +32,8 @@
 
     in {
     nixosConfigurations = {
-      NIXVM = mkSystem nixpkgs "x86_64-linux" "NIXVM";
+      PC-Matthijs = mkSystem nixpkgs "x86_64-linux" "PC-Matthijs";
+      # NIXVM = mkSystem nixpkgs "x86_64-linux" "NIXVM";
     };
   };
 
