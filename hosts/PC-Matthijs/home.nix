@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -20,6 +20,10 @@
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
       ];
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+      ];
       monitor = [
         "DP-6, 2560x1440, 0x0, 1"
         "HDMI-A-2, 1920x1080, 2560x0, 1"
@@ -29,7 +33,30 @@
 
   programs.kitty.enable = true;
   
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    policies = {
+      ExtensionSettings = {
+        "*".installation_mode = "blocked"; 
+        # uBlock Origin:
+        "uBlock0@raymondhill.net" = {
+        install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+        installation_mode = "force_installed";
+        };
+      };
+    };
+  };
+
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      github.copilot
+      bbenoist.nix
+    ];
+    # userSettings = {
+    #   "password-store" = "gnome-libsecret";
+    # };
+  };
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
