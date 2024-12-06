@@ -8,6 +8,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ../../modules/default.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
@@ -16,6 +17,10 @@
     users = {
       matthijs = import ./home.nix;
     };
+  };
+
+  modules = {
+    hyprland.enable = true;
   };
 
   # Enable networking
