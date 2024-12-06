@@ -7,5 +7,8 @@
     
     # Compositor 
     ./hyprland
+
+    # GPU
+    ./nvidia
     ];
 }
