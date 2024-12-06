@@ -5,8 +5,9 @@
     # system
     ./system/configuration.nix
     
-    # Compositor 
+    # GUI 
     ./hyprland
+    ./sddm
 
     # GPU
     ./nvidia

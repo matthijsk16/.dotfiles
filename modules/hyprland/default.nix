@@ -10,6 +10,7 @@ in
 
   config = mkIf cfg.enable {
     modules.nvidia.enable = true;
+    modules.sddm.enable = true;
 
     programs.hyprland.enable = true;
 

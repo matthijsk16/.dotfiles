@@ -14,7 +14,16 @@
       bind = [
         "$mod, Q, exec, kitty"
         "$mod, F, exec, firefox"
-      ]
+        "$mod, C, killactive"
+        "$mod, left, movefocus, l"
+        "$mod, right, movefocus, r"
+        "$mod, up, movefocus, u"
+        "$mod, down, movefocus, d"
+      ];
+      monitor = [
+        "DP-6, 2560x1440, 0x0, 1"
+        "HDMI-A-2, 1920x1080, 2560x0, 1"
+      ];
     };
   };
 
