@@ -8,6 +8,14 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+
+    settings = {
+      "$mod" = "SUPER";
+      bind = [
+        "$mod, Q, exec, kitty"
+        "$mod, F, exec, firefox"
+      ]
+    };
   };
 
   programs.kitty.enable = true;
