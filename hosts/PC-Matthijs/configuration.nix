@@ -41,6 +41,7 @@
     home-manager # Remove ??
     git
     gh
+    pavucontrol
   ];
 
   services.pipewire = {

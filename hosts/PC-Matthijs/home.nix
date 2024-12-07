@@ -28,10 +28,21 @@
         "DP-6, 2560x1440, 0x0, 1"
         "HDMI-A-2, 1920x1080, 2560x0, 1"
       ];
+      exec-once = [
+        "waybar"
+      ];
     };
   };
 
+  programs.waybar = {
+    enable = true;
+  };
+
+  gtk.cursorTheme.name = "volantes-cursors";
+
   programs.kitty.enable = true;
+
+  services.dunst.enable = true;
   
   programs.firefox = {
     enable = true;
