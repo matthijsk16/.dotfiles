@@ -42,6 +42,7 @@
     git
     gh
     pavucontrol
+    discord
   ];
 
   services.pipewire = {
