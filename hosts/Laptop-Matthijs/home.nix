@@ -6,43 +6,11 @@
   home.username = "matthijs";
   home.homeDirectory = "/home/matthijs";
 
-  wayland.windowManager.hyprland = {
+  dconf = {
     enable = true;
-
-    settings = {
-      "$mod" = "SUPER";
-      bind = [
-        "$mod, Q, exec, kitty"
-        "$mod, F, exec, firefox"
-        "$mod, C, killactive"
-        "$mod, left, movefocus, l"
-        "$mod, right, movefocus, r"
-        "$mod, up, movefocus, u"
-        "$mod, down, movefocus, d"
-      ];
-      bindm = [
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-      ];
-      monitor = [
-        ", preferred, auto, 1"
-      ];
-      exec-once = [
-        "waybar"
-      ];
-    };
+    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
 
-  programs.waybar = {
-    enable = true;
-  };
-
-  gtk.cursorTheme.name = "volantes-cursors";
-
-  programs.kitty.enable = true;
-
-  services.dunst.enable = true;
-  
   programs.firefox = {
     enable = true;
     policies = {
