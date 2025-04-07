@@ -25,8 +25,7 @@
         "$mod, mouse:273, resizewindow"
       ];
       monitor = [
-        "DP-6, 2560x1440, 0x0, 1"
-        "HDMI-A-2, 1920x1080, 2560x0, 1"
+        ", preferred, auto, 1"
       ];
       exec-once = [
         "waybar"
