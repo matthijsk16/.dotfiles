@@ -33,6 +33,7 @@
     in {
     nixosConfigurations = {
       PC-Matthijs = mkSystem nixpkgs "x86_64-linux" "PC-Matthijs";
+      Laptop-Matthijs = mkSystem nixpkgs "x86_64-linux" "Laptop-Matthijs";
     };
   };
 
