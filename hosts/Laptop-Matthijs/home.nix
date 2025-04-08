@@ -1,69 +1,16 @@
 { inputs, config, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
+  imports = [ ../../home-manager ];
+
   home.username = "matthijs";
   home.homeDirectory = "/home/matthijs";
 
-  dconf = {
-    enable = true;
-    settings = {
-      "org/gnome/desktop/interface".color-scheme = "prefer-dark";
-      "org/gnome/desktop/wm/keybindings" = {
-        switch-windows = ["<Alt>Tab"];
-        switch-applications = ["<Super>Tab"];
-      };
-      "org/gnome/shell" = {
-        disable-user-extensions = false;
-        enabled-extensions = with pkgs.gnomeExtensions; [
-          dash-to-dock.extensionUuid
-        ];
-        favorite-apps = [ 
-          "org.gnome.Terminal.desktop"
-          "firefox.desktop"
-          "code.desktop"
-        ];
-      };
-      "org/gnome/shell/extensions/dash-to-dock" = {
-        dash-max-icon-size = 64;
-        show-trash = false;
-      };
-    };
-  };
-
-  programs.firefox = {
-    enable = true;
-    policies = {
-      ExtensionSettings = {
-        "*".installation_mode = "blocked"; 
-        # uBlock Origin:
-        "uBlock0@raymondhill.net" = {
-        install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-        installation_mode = "force_installed";
-        };
-      };
-    };
-  };
-
-  programs.vscode = {
-    enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      github.copilot
-      bbenoist.nix
-      james-yu.latex-workshop
-    ];
-    # userSettings = {
-    #   "password-store" = "gnome-libsecret";
-    # };
-  };
-
-  home.file."onedrive_sync_list" = {
-    target = ".config/onedrive/sync_list";
-    text = ''
-      # Include ME_HTE 2 Matthijs Klasens folder 
-      /ME_HTE 2 Matthijs Klasens/
-    '';
+  modules = {
+    gnome.enable = true;
+    firefox.enable = true;
+    vscode.enable = true;
+    onedrive.enable = true;
   };
 
   # This value determines the Home Manager release that your configuration is
