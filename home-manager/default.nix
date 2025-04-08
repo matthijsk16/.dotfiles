@@ -6,5 +6,6 @@
      ./gnome
      ./firefox
       ./vscode
+      ./onedrive
     ];
 }
