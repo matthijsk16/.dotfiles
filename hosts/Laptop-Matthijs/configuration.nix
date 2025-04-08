@@ -31,7 +31,10 @@
     desktopManager.gnome.enable = true;
   };
 
+  time.hardwareClockInLocalTime = true;
+
   services.gnome.core-utilities.enable = false;
+  services.onedrive.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -52,8 +55,10 @@
     gh
     discord
     gnome-terminal
+    nautilus
     gnomeExtensions.dash-to-dock
     dconf-editor
+    texlive.combined.scheme-full
   ];
 
   services.pipewire = {

@@ -16,8 +16,9 @@
           dash-to-dock.extensionUuid
         ];
         favorite-apps = [ 
+          "org.gnome.Terminal.desktop"
           "firefox.desktop"
-          "vscode.desktop"
+          "code.desktop"
         ];
       };
       "org/gnome/shell/extensions/dash-to-dock" = {
@@ -46,10 +47,19 @@
     extensions = with pkgs.vscode-extensions; [
       github.copilot
       bbenoist.nix
+      james-yu.latex-workshop
     ];
     # userSettings = {
     #   "password-store" = "gnome-libsecret";
     # };
+  };
+
+  home.file."onedrive_sync_list" = {
+    target = ".config/onedrive/sync_list";
+    text = ''
+      # Include ME_HTE 2 Matthijs Klasens folder 
+      /ME_HTE 2 Matthijs Klasens/
+    '';
   };
 
   # This value determines the Home Manager release that your configuration is
