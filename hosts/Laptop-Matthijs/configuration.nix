@@ -53,6 +53,7 @@
     discord
     gnome-terminal
     gnomeExtensions.dash-to-dock
+    dconf-editor
   ];
 
   services.pipewire = {
