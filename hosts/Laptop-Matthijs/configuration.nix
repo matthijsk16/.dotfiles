@@ -59,6 +59,7 @@
     gnomeExtensions.dash-to-dock
     dconf-editor
     texlive.combined.scheme-full
+    lenovo-legion
   ];
 
   services.pipewire = {
