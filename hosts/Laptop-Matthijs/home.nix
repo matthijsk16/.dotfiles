@@ -12,6 +12,7 @@
       "org/gnome/desktop/interface".color-scheme = "prefer-dark";
       "org/gnome/desktop/wm/keybindings" = {
         switch-windows = ["<Alt>Tab"];
+        switch-applications = ["<Super>Tab"];
       };
       "org/gnome/shell" = {
         disable-user-extensions = false;
