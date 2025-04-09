@@ -19,7 +19,6 @@
 
   modules = {
     gnome.enable = true;
-    hyprland.enable = false;
   };
 
   # List packages installed in system profile. 
