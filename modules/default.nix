@@ -6,10 +6,6 @@
     ./system/configuration.nix
     
     # GUI 
-    ./hyprland
-    ./sddm
-
-    # GPU
-    ./nvidia
+    ./gnome
     ];
 }

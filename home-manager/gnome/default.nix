@@ -5,7 +5,7 @@ with lib; let
 
 in {
   options.modules.gnome = { 
-    enable = mkEnableOption "Gnome"; 
+    enable = mkEnableOption "Gnome desktop environment configuration"; 
   };
 
   config = mkIf cfg.enable {
