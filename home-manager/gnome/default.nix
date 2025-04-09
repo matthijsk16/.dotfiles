@@ -17,6 +17,13 @@ in {
           switch-windows = ["<Alt>Tab"];
           switch-applications = ["<Super>Tab"];
         };
+        "org/gnome/settings-daemon/plugins/power" = {
+          sleep-inactive-ac-timeout = 0;
+          sleep-inactive-battery-timeout = 1800;
+        };
+        "org/gnome/desktop/interface" = {
+          show-battery-percentage = true;
+        };
         "org/gnome/shell" = {
           disable-user-extensions = false;
           enabled-extensions = with pkgs.gnomeExtensions; [
