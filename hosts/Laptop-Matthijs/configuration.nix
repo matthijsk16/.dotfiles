@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix
       inputs.nixos-hardware.nixosModules.lenovo-legion-15arh05h
+      inputs.grub2-themes.nixosModules.default
       ../../modules/default.nix
       inputs.home-manager.nixosModules.home-manager
     ];
@@ -51,6 +52,12 @@
     description = "Matthijs Klasens";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+  };
+
+  boot.loader.grub2-theme = {
+    enable = true;
+    theme = "vimix";
+    footer = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

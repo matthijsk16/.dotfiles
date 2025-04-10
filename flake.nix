@@ -11,6 +11,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    grub2-themes.url = "github:vinceliuice/grub2-themes";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
