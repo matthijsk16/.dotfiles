@@ -10,6 +10,9 @@
       inputs.home-manager.nixosModules.home-manager
     ];
 
+  # Playmouth 
+  # https://wiki.nixos.org/wiki/Plymouth
+
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
@@ -46,6 +49,7 @@
   };
   
   time.hardwareClockInLocalTime = true;
+  nixpkgs.config.allowUnfree = true;
 
   users.users.matthijs = {
     isNormalUser = true;

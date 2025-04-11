@@ -22,10 +22,10 @@
           inherit system;
           specialArgs = { 
             inherit inputs; 
-            pkgs = import packages { 
-              inherit system; 
-              config = { allowUnfree = true; }; 
-            };
+            # pkgs = import packages { 
+            #   inherit system; 
+            #   config = { allowUnfree = true; }; 
+            # };
           };
           modules = [
             { networking.hostName = hostname; }
