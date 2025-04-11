@@ -21,6 +21,7 @@ in {
       gnome-terminal
       nautilus
       gnomeExtensions.dash-to-dock
+      gnome-system-monitor
     ];
   };
 }
