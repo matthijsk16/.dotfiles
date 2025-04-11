@@ -7,5 +7,7 @@
     
     # GUI 
     ./gnome
+
+    ./plymouth
     ];
 }

@@ -10,9 +10,6 @@
       inputs.home-manager.nixosModules.home-manager
     ];
 
-  # Playmouth 
-  # https://wiki.nixos.org/wiki/Plymouth
-
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
@@ -23,11 +20,11 @@
 
   modules = {
     gnome.enable = true;
+    plymouth.enable = true;
   };
 
   # List packages installed in system profile. 
   environment.systemPackages = with pkgs; [
-    linux-firmware
     home-manager # Remove ??
     git
     gh
