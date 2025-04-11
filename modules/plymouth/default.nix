@@ -1,5 +1,3 @@
-{ inputs, config, pkgs, ... }:
-
 { inputs, config, lib, pkgs, ... }:
 
 with lib; let 
