@@ -27,6 +27,7 @@
 
   # List packages installed in system profile. 
   environment.systemPackages = with pkgs; [
+    linux-firmware
     home-manager # Remove ??
     git
     gh
@@ -34,6 +35,7 @@
     dconf-editor
     texlive.combined.scheme-full
     lenovo-legion
+    signal-desktop
   ];
 
   networking.networkmanager.enable = true;
