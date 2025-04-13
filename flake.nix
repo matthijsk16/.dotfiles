@@ -13,6 +13,14 @@
     };
 
     grub2-themes.url = "github:vinceliuice/grub2-themes";
+
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # https://github.com/winapps-org/winapps
+    # https://github.com/winapps-org/winapps/pull/234/files/e8dc55a83abd3eb6b275990fb19bdb589b6ce13d#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5 
+    # https://nowsci.com/winapps/ 
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
