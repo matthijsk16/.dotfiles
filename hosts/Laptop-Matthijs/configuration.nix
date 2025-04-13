@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { inputs, config, pkgs, ... }:
 
 {
@@ -9,6 +5,7 @@
     [
       ./hardware-configuration.nix
       inputs.nixos-hardware.nixosModules.lenovo-legion-15arh05h
+      inputs.grub2-themes.nixosModules.default
       ../../modules/default.nix
       inputs.home-manager.nixosModules.home-manager
     ];
@@ -22,30 +19,8 @@
   };
 
   modules = {
-    hyprland.enable = false;
-  };
-
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-  };
-
-  time.hardwareClockInLocalTime = true;
-
-  services.gnome.core-utilities.enable = false;
-  services.onedrive.enable = true;
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.matthijs = {
-    isNormalUser = true;
-    description = "Matthijs Klasens";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    gnome.enable = true;
+    plymouth.enable = true;
   };
 
   # List packages installed in system profile. 
@@ -54,13 +29,15 @@
     git
     gh
     discord
-    gnome-terminal
-    nautilus
-    gnomeExtensions.dash-to-dock
     dconf-editor
     texlive.combined.scheme-full
     lenovo-legion
+    signal-desktop
   ];
+
+  networking.networkmanager.enable = true;
+
+  services.onedrive.enable = true;
 
   services.pipewire = {
     enable = true;
@@ -68,6 +45,22 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+  };
+  
+  time.hardwareClockInLocalTime = true;
+  nixpkgs.config.allowUnfree = true;
+
+  users.users.matthijs = {
+    isNormalUser = true;
+    description = "Matthijs Klasens";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [];
+  };
+
+  boot.loader.grub2-theme = {
+    enable = true;
+    theme = "vimix";
+    footer = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

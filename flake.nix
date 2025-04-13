@@ -11,6 +11,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    grub2-themes.url = "github:vinceliuice/grub2-themes";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -20,10 +22,10 @@
           inherit system;
           specialArgs = { 
             inherit inputs; 
-            pkgs = import packages { 
-              inherit system; 
-              config = { allowUnfree = true; }; 
-            };
+            # pkgs = import packages { 
+            #   inherit system; 
+            #   config = { allowUnfree = true; }; 
+            # };
           };
           modules = [
             { networking.hostName = hostname; }

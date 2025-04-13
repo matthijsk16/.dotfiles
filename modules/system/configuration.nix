@@ -10,8 +10,8 @@
     };
     gc = {
       automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
+      dates = "daily";
+      options = "--delete-older-than 7d";
     };
   };
 
@@ -19,7 +19,7 @@
     tmp.cleanOnBoot = true;
     loader = {
       systemd-boot.enable = false;
-      timeout = 5;
+      timeout = 1;
       efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
