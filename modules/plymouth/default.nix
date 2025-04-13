@@ -10,7 +10,6 @@ in {
 
   config = mkIf cfg.enable {
     boot = {
-
       plymouth = {
         enable = true;
         theme = "hexagon_alt";

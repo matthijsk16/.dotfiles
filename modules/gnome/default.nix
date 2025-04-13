@@ -16,6 +16,7 @@ in {
     };
 
     services.gnome.core-utilities.enable = false;
+    services.xserver.excludePackages = [ pkgs.xterm ];
 
     environment.systemPackages = with pkgs; [
       gnome-terminal
