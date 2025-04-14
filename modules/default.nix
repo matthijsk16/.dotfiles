@@ -9,5 +9,7 @@
     ./gnome
 
     ./plymouth
+
+    ./winapps
     ];
 }

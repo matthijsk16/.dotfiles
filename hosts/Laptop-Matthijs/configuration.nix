@@ -33,6 +33,7 @@
   modules = {
     gnome.enable = true;
     plymouth.enable = true;
+    winapps.enable = true;
   };
 
   # List packages installed in system profile. 
