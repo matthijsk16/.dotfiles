@@ -20,6 +20,10 @@
       sopsFile = ../../secrets/windows.env;
       format = "dotenv";
     };
+    winapps = {
+      sopsFile = ../../secrets/winapps.env;
+      format = "dotenv";
+    };
   };
 
   home-manager = {

@@ -9,10 +9,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # environment.systemPackages = [
-    #   inputs.winapps.packages."x86_64-linux".winapps
-    #   inputs.winapps.packages."x86_64-linux".winapps-launcher
-    # ];
+    environment.systemPackages = [
+      inputs.winapps.packages."x86_64-linux".winapps
+      inputs.winapps.packages."x86_64-linux".winapps-launcher
+    ];
     
     virtualisation.oci-containers.backend = "docker";
     virtualisation.oci-containers.containers = {
@@ -40,7 +40,7 @@ in {
         volumes = [
           "/var/lib/windows:/storage"
           "/home/matthijs:/shared"
-          "./oem:/oem"
+          # "./oem:/oem"
         ];
         devices = [
           "/dev/kvm"
