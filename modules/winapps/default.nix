@@ -18,6 +18,7 @@ in {
     virtualisation.oci-containers.containers = {
       # https://github.com/winapps-org/winapps
       "winapps" = {
+        serviceName = "winapps";
         image = "ghcr.io/dockur/windows:latest";
         environment = {
           "VERSION" = "11";
