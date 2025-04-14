@@ -5,10 +5,22 @@
     [
       ./hardware-configuration.nix
       inputs.nixos-hardware.nixosModules.lenovo-legion-15arh05h
+      inputs.sops-nix.nixosModules.sops
       inputs.grub2-themes.nixosModules.default
       ../../modules/default.nix
       inputs.home-manager.nixosModules.home-manager
     ];
+
+  sops.defaultSopsFile = ../../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/etc/sops-age-key.txt";
+
+  sops.secrets = {
+    windows = {
+      sopsFile = ../../secrets/windows.env;
+      format = "dotenv";
+    };
+  };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -26,6 +38,7 @@
   # List packages installed in system profile. 
   environment.systemPackages = with pkgs; [
     home-manager # Remove ??
+    bat
     git
     gh
     discord
@@ -33,6 +46,8 @@
     texlive.combined.scheme-full
     lenovo-legion
     signal-desktop
+    age
+    sops
   ];
 
   networking.networkmanager.enable = true;
