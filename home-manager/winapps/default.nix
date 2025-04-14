@@ -1,11 +1,11 @@
 { inputs, config, lib, pkgs, ... }:
 
 with lib; let 
-  cfg = config.modules.REPLACE; 
+  cfg = config.modules.winapps; 
 
 in {
-  options.modules.REPLACE = { 
-    enable = mkEnableOption "REPLACE";
+  options.modules.winapps = { 
+    enable = mkEnableOption "Winapps configuration file";
 
     option1 = mkOption {
       type = types.str;

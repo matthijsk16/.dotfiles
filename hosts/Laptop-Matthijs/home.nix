@@ -11,6 +11,7 @@
     firefox.enable = true;
     vscode.enable = true;
     onedrive.enable = true;
+    winapps.enable = true;
   };
 
   # This value determines the Home Manager release that your configuration is

@@ -7,5 +7,6 @@
      ./firefox
       ./vscode
       ./onedrive
+      ./winapps
     ];
 }
