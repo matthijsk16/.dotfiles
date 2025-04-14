@@ -1,7 +1,20 @@
 { inputs, config, pkgs, ... }:
 
 {
-  imports = [ ../../home-manager ];
+  imports = [ 
+    ../../home-manager 
+  ];
+
+  sops.defaultSopsFile = ../../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/matthijs/.config/sops/age/keys.txt";
+
+  sops.secrets = {
+    winapps = {
+      sopsFile = ../../secrets/winapps.env;
+      format = "dotenv";
+    };
+  };
 
   home.username = "matthijs";
   home.homeDirectory = "/home/matthijs";

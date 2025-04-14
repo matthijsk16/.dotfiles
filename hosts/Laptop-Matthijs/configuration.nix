@@ -13,15 +13,11 @@
 
   sops.defaultSopsFile = ../../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/etc/sops-age-key.txt";
+  sops.age.keyFile = "/home/matthijs/.config/sops/age/keys.txt";
 
   sops.secrets = {
     windows = {
       sopsFile = ../../secrets/windows.env;
-      format = "dotenv";
-    };
-    winapps = {
-      sopsFile = ../../secrets/winapps.env;
       format = "dotenv";
     };
   };
@@ -32,6 +28,9 @@
     users = {
       matthijs = import ./home.nix;
     };
+    sharedModules = [
+      inputs.sops-nix.homeManagerModules.sops
+    ];
   };
 
   modules = {
@@ -73,7 +72,7 @@
   users.users.matthijs = {
     isNormalUser = true;
     description = "Matthijs Klasens";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
   };
 
