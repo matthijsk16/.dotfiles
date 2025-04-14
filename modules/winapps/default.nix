@@ -17,8 +17,8 @@ in {
     virtualisation.oci-containers.backend = "docker";
     virtualisation.oci-containers.containers = {
       # https://github.com/winapps-org/winapps
-      "winapps" = {
-        serviceName = "winapps";
+      "windows" = {
+        serviceName = "windows";
         image = "ghcr.io/dockur/windows:latest";
         environment = {
           "VERSION" = "11";
@@ -26,7 +26,6 @@ in {
           "CPU_CORES" = "4";
           "DISK_SIZE" = "64G";
           "USERNAME" = "matthijs";
-          "PASSWORD" = "VerySecret";
           "HOME" = "/home/matthijs";
         };
         environmentFiles = [ 
