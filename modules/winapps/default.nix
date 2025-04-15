@@ -14,7 +14,7 @@ in {
       inputs.winapps.packages."x86_64-linux".winapps-launcher
     ];
     
-    virtualisation.oci-containers.backend = "docker";
+    virtualisation.oci-containers.backend = "podman";
     virtualisation.oci-containers.containers = {
       # https://github.com/winapps-org/winapps
       "WinApps" = {
@@ -41,6 +41,8 @@ in {
           "/var/lib/windows:/storage"
           "/home/matthijs:/shared"
           # "./oem:/oem"
+          # Remove after first boot
+          "/home/matthijs/.dotfiles/modules/winapps/oem:/oem"
         ];
         devices = [
           "/dev/kvm"
