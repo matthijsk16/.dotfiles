@@ -19,6 +19,7 @@
     windows = {
       sopsFile = ../../secrets/windows.env;
       format = "dotenv";
+      owner = "matthijs";
     };
   };
 
@@ -72,7 +73,7 @@
   users.users.matthijs = {
     isNormalUser = true;
     description = "Matthijs Klasens";
-    extraGroups = [ "networkmanager" "wheel" "docker" "podman" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
   };
 
