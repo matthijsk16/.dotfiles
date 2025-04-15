@@ -9,15 +9,34 @@ in {
   };
 
   config = mkIf cfg.enable {
+    boot.kernelModules = [
+      "ip_tables"
+      "iptable_nat"
+    ];
+
+    virtualisation.containers.enable = true;
+    virtualisation = {
+      podman = {
+        enable = true;
+        # Create a `docker` alias for podman, to use it as a drop-in replacement
+        dockerCompat = true;
+        # Required for containers under podman-compose to be able to talk to each other.
+        defaultNetwork.settings.dns_enabled = true;
+      };
+    };
+    
     environment.systemPackages = [
       inputs.winapps.packages."x86_64-linux".winapps
       inputs.winapps.packages."x86_64-linux".winapps-launcher
+      pkgs.podman
+      pkgs.podman-compose
     ];
     
     virtualisation.oci-containers.backend = "podman";
     virtualisation.oci-containers.containers = {
       # https://github.com/winapps-org/winapps
       "WinApps" = {
+        podman.user = "matthijs";
         serviceName = "WinApps";
         image = "ghcr.io/dockur/windows:latest";
         environment = {
@@ -36,7 +55,7 @@ in {
           "3389:3389/tcp"
           "3389:3389/udp"
         ];
-        extraOptions = [ "--cap-add=NET_ADMIN" ];
+        extraOptions = [ "--cap-add=NET_ADMIN" "--cap-add=CAP_NET_RAW" ];
         volumes = [
           "/var/lib/windows:/storage"
           "/home/matthijs:/shared"
