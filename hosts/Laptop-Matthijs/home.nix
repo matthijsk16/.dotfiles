@@ -14,6 +14,10 @@
       sopsFile = ../../secrets/winapps.env;
       format = "dotenv";
     };
+    windows = {
+      sopsFile = ../../secrets/windows.env;
+      format = "dotenv";
+    };
   };
 
   home.username = "matthijs";

@@ -75,6 +75,7 @@
     description = "Matthijs Klasens";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
+    linger = true;
   };
 
   boot.loader.grub2-theme = {
