@@ -14,16 +14,16 @@ in {
     #   "iptable_nat"
     # ];
 
-    # virtualisation.containers.enable = true;
-    # virtualisation = {
-    #   podman = {
-    #     enable = true;
-    #     # Create a `docker` alias for podman, to use it as a drop-in replacement
-    #     dockerCompat = true;
-    #     # Required for containers under podman-compose to be able to talk to each other.
-    #     defaultNetwork.settings.dns_enabled = true;
-    #   };
-    # };
+    virtualisation.containers.enable = true;
+    virtualisation = {
+      podman = {
+        enable = true;
+        # Create a `docker` alias for podman, to use it as a drop-in replacement
+        dockerCompat = true;
+        # Required for containers under podman-compose to be able to talk to each other.
+        defaultNetwork.settings.dns_enabled = true;
+      };
+    };
     
     environment.systemPackages = [
       inputs.winapps.packages."x86_64-linux".winapps
@@ -31,8 +31,24 @@ in {
       pkgs.podman
       pkgs.podman-compose
     ];
-    
-    # virtualisation.oci-containers.backend = "podman";
+
+    # systemd.services.init-winapps-network = {
+    #   description = "Create the network bridge for WinApps.";
+    #   after = [ "network.target" ];
+    #   wantedBy = [ "multi-user.target" ];
+    #   serviceConfig.Type = "oneshot";
+    #   script = ''
+    #     # Put a true at the end to prevent getting non-zero return code, which will
+    #     # crash the whole service.
+    #     check=$(${pkgs.podman}/bin/podman network ls | grep "winapps-bridge" || true)
+    #     if [ -z "$check" ];
+    #       then ${pkgs.podman}/bin/podman network create winapps-bridge
+    #       else echo "winapps-bridge already exists in podman"
+    #     fi
+    #   '';
+    # };
+
+    # virtualisation.oci-containers.backend = "docker";
     # virtualisation.oci-containers.containers = {
     #   # https://github.com/winapps-org/winapps
     #   "WinApps" = {

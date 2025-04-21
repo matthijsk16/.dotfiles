@@ -22,7 +22,32 @@ in {
 #     Log out.
 # That should do it.
 
+    # systemd.user.services.init-winapps-network = {
+    #   Unit = {
+    #     description = "Create the network bridge for WinApps.";
+    #     after = [ "network.target" ];
+    #   };
+    #   Install = {
+    #     wantedBy = [ "multi-user.target" ];
+    #   };
+    #   Service = {
+    #     Type = "oneshot";
+    #     ExecStart = "${pkgs.writeShellScript "init-winapps-network" ''
+    #       # Put a true at the end to prevent getting non-zero return code, which will
+    #       # crash the whole service.
+    #       check=$(${pkgs.podman}/bin/podman network ls | grep "winapps-bridge" || true)
+    #       if [ -z "$check" ];
+    #         then ${pkgs.podman}/bin/podman network create winapps-bridge
+    #         else echo "winapps-bridge already exists in podman"
+    #       fi
+    #     ''}";
+    #   };
+    # };
+
     services.podman.enable = true;
+    # services.podman.networks."winapps-net" = {
+    #   # Network config here?
+    # };
     services.podman.containers."WinApps" = {
       # serviceName = "WinApps";
       image = "ghcr.io/dockur/windows:latest";
@@ -65,6 +90,7 @@ in {
       ];
       extraPodmanArgs = [
         "--sysctl net.ipv4.ip_forward=1"
+        # "--network=winapps-bridge"
       ];
       autoStart = true;
     };  

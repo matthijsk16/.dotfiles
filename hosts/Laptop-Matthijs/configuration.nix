@@ -53,6 +53,7 @@
     signal-desktop
     age
     sops
+    freerdp
   ];
 
   networking.networkmanager.enable = true;
