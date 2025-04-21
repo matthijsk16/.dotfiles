@@ -3,6 +3,10 @@
 with lib; let 
   cfg = config.modules.winapps; 
 
+  # podmanWrapper = pkgs.writeShellScriptBin "podman" ''
+  #   exec sudo ${pkgs.podman}/bin/podman "$@"
+  # '';
+
 in {
   options.modules.winapps = { 
     enable = mkEnableOption "Winapps configuration file";
@@ -13,6 +17,13 @@ in {
       target = ".config/winapps/winapps.conf";
       source = config.lib.file.mkOutOfStoreSymlink config.sops.secrets.winapps.path;      
     };
+
+  # home.packages = [
+  #   podmanWrapper
+  # ];
+
+  # # Ensure our podman wrapper is first in PATH
+  # home.sessionPath = [ "${podmanWrapper}/bin" ];
 
 # PREVENTING AUTO LOGIN
 # I figured it out. It has nothing to do with WinApps - the solution is in Windows itself.
@@ -44,55 +55,56 @@ in {
     #   };
     # };
 
-    services.podman.enable = true;
-    # services.podman.networks."winapps-net" = {
-    #   # Network config here?
-    # };
-    services.podman.containers."WinApps" = {
-      # serviceName = "WinApps";
-      image = "ghcr.io/dockur/windows:latest";
-      # user = "matthijs";
-      # group = "matthijs";
+    # services.podman.enable = true;
+    # # services.podman.networks."winapps-net" = {
+    # #   # Network config here?
+    # # };
+    # services.podman.containers."WinApps" = {
+    #   # serviceName = "WinApps";
+    #   image = "ghcr.io/dockur/windows:latest";
+    #   # user = "matthijs";
+    #   # group = "matthijs";
 
-      # https://mynixos.com/home-manager/option/services.podman.containers.%3Cname%3E.network
-      # https://docs.podman.io/en/latest/markdown/podman-run.1.html
-      # https://github.com/dockur/windows/issues/679
-      # network = "user";
-      environment = {
-        "VERSION" = "11";
-        "RAM_SIZE" = "4G";
-        "CPU_CORES" = "4";
-        "DISK_SIZE" = "64G";
-        "USERNAME" = "matthijs";
-        "HOME" = "/home/matthijs";
-      };
-      environmentFile = [ 
-        "${config.sops.secrets.windows.path}"
-      ];
-      ports = [
-        "8006:8006"
-        "3389:3389/tcp"
-        "3389:3389/udp"
-      ];
-      addCapabilities = [
-        "ALL"
-        "NET_ADMIN"
-        "CAP_NET_RAW"
-      ];
-      volumes = [
-          "/home/matthijs/windows:/storage"
-          "/home/matthijs:/shared"
-          "/home/matthijs/.dotfiles/modules/winapps/oem:/oem"
-        ];
-      devices = [
-        "/dev/kvm"
-        "/dev/net/tun"
-      ];
-      extraPodmanArgs = [
-        "--sysctl net.ipv4.ip_forward=1"
-        # "--network=winapps-bridge"
-      ];
-      autoStart = true;
-    };  
+    #   # https://mynixos.com/home-manager/option/services.podman.containers.%3Cname%3E.network
+    #   # https://docs.podman.io/en/latest/markdown/podman-run.1.html
+    #   # https://github.com/dockur/windows/issues/679
+    #   # network = "user";
+    #   environment = {
+    #     "VERSION" = "11";
+    #     "RAM_SIZE" = "4G";
+    #     "CPU_CORES" = "4";
+    #     "DISK_SIZE" = "64G";
+    #     "USERNAME" = "matthijs";
+    #     "HOME" = "/home/matthijs";
+    #   };
+    #   environmentFile = [ 
+    #     "${config.sops.secrets.windows.path}"
+    #   ];
+    #   ports = [
+    #     "8006:8006"
+    #     "3389:3389/tcp"
+    #     "3389:3389/udp"
+    #   ];
+    #   addCapabilities = [
+    #     # "ALL"
+    #     "NET_ADMIN"
+    #     "CAP_NET_RAW"
+    #   ];
+    #   volumes = [
+    #       "/home/matthijs/windows:/storage"
+    #       "/home/matthijs:/shared"
+    #       "/home/matthijs/.dotfiles/modules/winapps/oem:/oem"
+    #     ];
+    #   devices = [
+    #     "/dev/kvm"
+    #     "/dev/net/tun"
+    #   ];
+    #   extraPodmanArgs = [
+    #     "--sysctl=net.ipv4.ip_forward=1"
+    #     # "--network=slirp4netns:allow_host_loopback=true"
+    #     # "--network=winapps-bridge"
+    #   ];
+    #   autoStart = true;
+    # };  
   };
 }
