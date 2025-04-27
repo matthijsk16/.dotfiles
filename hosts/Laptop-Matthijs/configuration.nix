@@ -54,7 +54,7 @@
     age
     sops
     freerdp
-    onedrivegui
+    # onedrivegui
   ];
 
   networking.networkmanager.enable = true;
