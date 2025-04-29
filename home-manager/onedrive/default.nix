@@ -14,6 +14,9 @@ in {
       text = ''
         # Include ME_HTE 2 Matthijs Klasens folder 
         /ME_HTE 2 Matthijs Klasens/
+
+        # Include 0 Prive folder
+        /0 Prive/Documenten/
       '';
     };
   };

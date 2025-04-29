@@ -31,6 +31,14 @@
     winapps.enable = true;
   };
 
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      rebuild = "sudo nixos-rebuild switch --flake .";
+      ostat = "journalctl --user -rt onedrive | less";
+    };
+  };
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
