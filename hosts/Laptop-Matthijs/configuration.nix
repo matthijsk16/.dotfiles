@@ -38,6 +38,7 @@
     gnome.enable = true;
     plymouth.enable = true;
     winapps.enable = true;
+    warp.enable = true;
   };
 
   # List packages installed in system profile. 
@@ -62,19 +63,6 @@
   networking.networkmanager.enable = true;
 
   services.onedrive.enable = true;
-
-  services.cloudflare-warp.enable = true;
-  # WARP-CLI 101
-  # 1. Enable warp-cli with the config line above
-  # 2. Switch to tunnel only mode with: warp-cli mode tunnel_only
-  # 3. Go to the following URL to register: https://<teamname>.cloudflareaccess.com/warp
-  # 4. Inspect the blue "Open Cloudflare WARP" button and copy the auth token
-  # 5. Run the register command with the token: warp-cli registration token https://.cloudflareaccess.com/auth?token=<token>
-  # 6. Connect to the tunnel with: warp-cli connect
-  # 7. Disable the connectivity check with: warp-cli debug connectivity-check disable
-  # References: 
-  # https://community.cloudflare.com/t/how-to-register-warp-client-for-linux-via-terminal/653232
-  # https://github.com/jamesmcm/vopono/pull/300
 
   services.pipewire = {
     enable = true;

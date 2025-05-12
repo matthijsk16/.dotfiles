@@ -11,5 +11,7 @@
     ./plymouth
 
     ./winapps
+
+    ./warp
     ];
 }
