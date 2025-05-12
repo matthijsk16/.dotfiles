@@ -23,7 +23,7 @@ in {
       nautilus
       gnomeExtensions.dash-to-dock
       gnome-system-monitor
-      # gnomeExtensions.resource-monitor
+      gnomeExtensions.resource-monitor
     ];
   };
 }
