@@ -56,6 +56,7 @@
     sops
     freerdp
     # onedrivegui
+    zotero
   ];
 
   programs.steam.enable = true;

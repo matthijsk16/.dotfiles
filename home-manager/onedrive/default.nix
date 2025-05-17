@@ -17,6 +17,9 @@ in {
 
         # Include 0 Prive folder
         /0 Prive/Documenten/
+
+        # Include Zotero folder
+        /Zotero/
       '';
     };
   };
