@@ -24,6 +24,11 @@ in {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/library_access/latest.xpi";
             installation_mode = "force_installed";
           };
+          # Zotero Connector:
+          "zotero@chnm.gmu.edu" = {
+            install_url = "https://www.zotero.org/download/connector/dl?browser=firefox&version=5.0.166";
+            installation_mode = "force_installed";
+          };
         };
       };
     };
