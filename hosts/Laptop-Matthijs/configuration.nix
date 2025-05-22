@@ -47,6 +47,7 @@
     bat
     git
     gh
+    wget
     discord
     dconf-editor
     texlive.combined.scheme-full
