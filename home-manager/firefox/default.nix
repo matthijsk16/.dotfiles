@@ -3,6 +3,15 @@
 with lib; let 
   cfg = config.modules.firefox; 
 
+  lock-false = {
+      Value = false;
+      Status = "locked";
+    };
+    lock-true = {
+      Value = true;
+      Status = "locked";
+    };
+
 in {
   options.modules.firefox = { 
     enable = mkEnableOption "Firefox";
@@ -29,6 +38,9 @@ in {
             install_url = "https://www.zotero.org/download/connector/dl?browser=firefox&version=5.0.166";
             installation_mode = "force_installed";
           };
+        };
+        Preferences = { 
+          "general.autoScroll" = lock-true;
         };
       };
     };
