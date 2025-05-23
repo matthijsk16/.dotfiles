@@ -9,16 +9,16 @@
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/matthijs/.config/sops/age/keys.txt";
 
-  sops.secrets = {
-    winapps = {
-      sopsFile = ../../secrets/winapps.env;
-      format = "dotenv";
-    };
-    windows = {
-      sopsFile = ../../secrets/windows.env;
-      format = "dotenv";
-    };
-  };
+  # sops.secrets = {
+  #   winapps = {
+  #     sopsFile = ../../secrets/winapps.env;
+  #     format = "dotenv";
+  #   };
+  #   windows = {
+  #     sopsFile = ../../secrets/windows.env;
+  #     format = "dotenv";
+  #   };
+  # };
 
   home.username = "matthijs";
   home.homeDirectory = "/home/matthijs";

@@ -3,16 +3,19 @@
 with lib; let 
   cfg = config.modules.winapps; 
 
-  # podmanWrapper = pkgs.writeShellScriptBin "podman" ''
-  #   exec sudo ${pkgs.podman}/bin/podman "$@"
-  # '';
-
 in {
   options.modules.winapps = { 
     enable = mkEnableOption "Winapps configuration file";
   };
 
   config = mkIf cfg.enable {
+    sops.secrets = {
+      winapps = {
+        sopsFile = ../../secrets/winapps.env;
+        format = "dotenv";
+      };
+    };
+    
     home.file."winapps-config-file" = {
       target = ".config/winapps/winapps.conf";
       source = config.lib.file.mkOutOfStoreSymlink config.sops.secrets.winapps.path;      

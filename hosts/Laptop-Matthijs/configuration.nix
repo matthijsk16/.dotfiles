@@ -15,13 +15,13 @@
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/matthijs/.config/sops/age/keys.txt";
 
-  sops.secrets = {
-    windows = {
-      sopsFile = ../../secrets/windows.env;
-      format = "dotenv";
-      owner = "matthijs";
-    };
-  };
+  # sops.secrets = {
+  #   windows = {
+  #     sopsFile = ../../secrets/windows.env;
+  #     format = "dotenv";
+  #     # owner = "matthijs";
+  #   };
+  # };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
